@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>反邪教知识测试</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
+        .question { margin-bottom: 15px; padding: 10px; background: #f5f5f5; border-radius: 5px; }
+        button { padding: 10px 15px; background-color: #e74c3c; color: white; border: none; cursor: pointer; }
+        #result { display: none; margin-top: 20px; padding: 15px; background: #f8f9fa; border-left: 4px solid #e74c3c; }
+    </style>
+</head>
+<body>
+    <h1 style="color: #e74c3c;">反邪教知识测试</h1>
+    <form id="quiz">
+        <!-- 问题1 -->
+        <div class="question">
+            <p><strong>1. 邪教组织通常通过以下哪种方式控制成员？</strong></p >
+            <label><input type="radio" name="q1" value="a"> A. 精神洗脑和恐吓</label><br>
+            <label><input type="radio" name="q1" value="b"> B. 提供高薪工作</label><br>
+            <label><input type="radio" name="q1" value="c"> C. 免费旅游</label>
+        </div>
+
+        <!-- 问题2 -->
+        <div class="question">
+            <p><strong>2. 发现邪教宣传材料，正确的做法是：</strong></p >
+            <label><input type="radio" name="q2" value="a"> A. 立即报警或联系社区</label><br>
+            <label><input type="radio" name="q2" value="b"> B. 带回家研究</label><br>
+            <label><input type="radio" name="q2" value="c"> C. 分享给朋友</label>
+        </div>
+
+        <!-- 问题3 -->
+        <div class="question">
+            <p><strong>3. 以下哪项是邪教的常见特征？</strong></p >
+            <label><input type="radio" name="q3" value="a"> A. 神化教主，反对科学</label><br>
+            <label><input type="radio" name="q3" value="b"> B. 公开透明的财务</label><br>
+            <label><input type="radio" name="q3" value="c"> C. 鼓励成员独立思考</label>
+        </div>
+
+        <button type="button" onclick="submitQuiz()">提交答案</button>
+    </form>
+
+    <div id="result">
+        <h3>测试结果</h3>
+        <p id="score"></p >
+        <p id="suggestion"></p >
+        <hr>
+        <p>?? 了解更多：中国反邪教网</p >
+        <p>? 举报电话：<strong>12339</strong>（国家安全机关）</p >
+    </div>
+
+    <script>
+        function submitQuiz() {
+            const answers = { q1: "a", q2: "a", q3: "a" };
+            let score = 0;
+            
+            for (let q in answers) {
+                const selected = document.querySelector(`input[name="${q}"]:checked`);
+                if (selected && selected.value === answers[q]) score++;
+            }
+
+            document.getElementById("score").innerHTML = `? 得分：${score}/3`;
+            document.getElementById("suggestion").innerHTML = 
+                score === 3 ? "?? 您具备良好的反邪教意识！" : 
+                "?? 建议学习更多反邪教知识，提高警惕！";
+            document.getElementById("result").style.display = "block";
+        }
+    </script>
+</body>
+</html>
